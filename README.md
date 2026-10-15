@@ -13,6 +13,11 @@ For this wave, please have each partner make a commit below with their username 
 
 "I, YOUR_GITHUB_USERNAME, understand that AI is ONLY to be used for tests, and that every commit that I use AI for must start with 'AI Used'"
 
+Signature #1: I, BushyMustache, understand that AI is ONLY used for tests, and that every commit that I use AI for must start
+with "AI Used"
+
+Signature #2: 
+
 ## Wave 1: Understand
 Read through ImageSummaryApp in detail with your partner. Understand what each part does. This will involve looking through and reading ALL of the other classes records and interfaces. This will take a long time, but it is worth it! Do not skimp on this part, you will regret it! Also look at the sampleInput and sampleOutput folders to understand what comes in and what goes out.
 
