@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class DfsBinaryGroupFinder implements BinaryGroupFinder {
@@ -31,10 +32,12 @@ public class DfsBinaryGroupFinder implements BinaryGroupFinder {
     @Override
     public List<Group> findConnectedGroups(int[][] image) {
         if (image == null) throw new NullPointerException();
+        List<Group> whitePixels = new ArrayList<>();
+        int size = 0;
 
         for (int r = 0; r < image.length; r++) {
             for (int c = 0; c < image[r].length; c++) {
-                
+                if(image[r][c] == 1) whitePixels.add(size, image[r][c]);
             }
         }
         return null;
