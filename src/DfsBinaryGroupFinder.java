@@ -32,6 +32,7 @@ public class DfsBinaryGroupFinder implements BinaryGroupFinder {
     @Override
     public List<Group> findConnectedGroups(int[][] image) {
         if (image == null) throw new NullPointerException();
+        if (image.length == 0 || image[0].length == 0) throw new IllegalArgumentException();
         List<Group> groups = new ArrayList<>();
 
         for (int r = 0; r < image.length; r++) {
@@ -40,12 +41,16 @@ public class DfsBinaryGroupFinder implements BinaryGroupFinder {
                 int sumX = 0;
                 int sumY = 0;
 
+                if (image[r][c] != 1 || image[r][c] != 0) throw new NullPointerException();
+
                 if (image[r][c] == 1) {
                     pixels.add(image[r][c]);
                     sumX = sumX + r;
                     sumY = sumY + c;
                 } else {
                     int pixelsSize = pixels.size();
+                    if (pixelsSize == 0) continue;
+
                     int averageX = sumX / pixelsSize;
                     int averageY = sumY / pixelsSize;
 
