@@ -40,7 +40,7 @@ public class DfsBinaryGroupFinder implements BinaryGroupFinder {
                 int sumX = 0;
                 int sumY = 0;
 
-                if (image[r][c] == 1 || image[r][c] == 0) {
+                if (image[r][c] == 1) {
                     pixels.add(image[r][c]);
                     sumX = sumX + r;
                     sumY = sumY + c;
