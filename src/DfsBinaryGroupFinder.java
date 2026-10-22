@@ -36,7 +36,7 @@ public class DfsBinaryGroupFinder implements BinaryGroupFinder {
         if (image[0].length > image[1].length || image[1].length > image[0].length) throw new IllegalArgumentException();
         List<Group> groups = new ArrayList<>();
 
-        List<Integer> pixels = new ArrayList<>();
+        int pixels = 0;
         int sumX = 0;
         int sumY = 0;
 
@@ -46,42 +46,42 @@ public class DfsBinaryGroupFinder implements BinaryGroupFinder {
                 if (image[r][c] != 1 && image[r][c] != 0) throw new NullPointerException();
             
                 if (image[r][c] == 1) {
-                    dfs(image, r, c);
-                    pixels.add(image[r][c]);
-                    sumX = sumX + r;
-                    sumY = sumY + c;
-                } else {
-                    int pixelsSize = pixels.size();
-                    if (pixelsSize == 0) continue;
+                    dfs(image, r, c, pixels, sumX, sumY);
+                } 
 
-                    int averageX = sumX / pixelsSize;
-                    int averageY = sumY / pixelsSize;
+                if (pixels == 0) continue;
 
-                    Group group = new Group(pixelsSize, new Coordinate(averageX, averageY));
-                    groups.add(group);
+                int averageX = sumX / pixels;
+                int averageY = sumY / pixels;
 
-                    pixels = new ArrayList<>();
-                    sumX = 0;
-                    sumY = 0;
-                }
+                Group group = new Group(pixels, new Coordinate(averageX, averageY));
+                groups.add(group);
+
+                pixels = 0;
+                sumX = 0;
+                sumY = 0;
             }
         }
         return groups;
     }
 
-    private static void dfs(int[][] image, int row, int column) {
+    private static void dfs(int[][] image, int row, int column, int pixels, int sumX, int sumY) {
         int[][] moves = new int[][] {
-            {-1, 0},
-            {1, 0},
-            {0, -1},
-            {0, 1}
+            {-1, 0}, // LEFT
+            {1, 0}, // RIGHT
+            {0, -1}, // UP
+            {0, 1} // DOWN
         };
 
         if (row < 0 || row >= image.length ||
             column < 0 || column >= image[row].length ||
-            image[row][column] == '0') {
+            image[row][column] == 0) {
             return;
         }
+
+        pixels++;
+        sumX += row;
+        sumY +=column;
 
         image[row][column] = 0;
 
@@ -89,7 +89,7 @@ public class DfsBinaryGroupFinder implements BinaryGroupFinder {
             int nextRow = row + move[0];
             int nextColumn = column + move[1];
 
-            dfs(image, nextRow, nextColumn);
+            dfs(image, nextRow, nextColumn, pixels, sumX, sumY);
         }
     }
     
