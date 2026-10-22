@@ -36,11 +36,12 @@ public class DfsBinaryGroupFinder implements BinaryGroupFinder {
         if (image[0].length > image[1].length || image[1].length > image[0].length) throw new IllegalArgumentException();
         List<Group> groups = new ArrayList<>();
 
+        int sumX = 0;
+        int sumY = 0;
+
         for (int r = 0; r < image.length; r++) {
             for (int c = 0; c < image[r].length; c++) {
                 List<Integer> pixels = new ArrayList<>();
-                int sumX = 0;
-                int sumY = 0;
 
                 if (image[r][c] != 1 && image[r][c] != 0) throw new NullPointerException();
                 // if(image[r][c] > 1 || image[r][c] < 0) throw new IllegalArgumentException();
@@ -66,6 +67,41 @@ public class DfsBinaryGroupFinder implements BinaryGroupFinder {
             }
         }
         return groups;
+    }
+
+        private static List<int[]> possibleMoves(int[][] image, int[] current){
+        int curR = current[0];
+        int curC = current[1];
+        
+        int newR, newC;
+        List<int[]> possible = new ArrayList<>();
+
+        //up
+        newR = curR -1;
+        newC = curC;
+        if(newR >= 0 && image[newR][newC] != 0){
+            possible.add(new int[] {newR, newC});
+        }
+        //down
+        newR = curR +1;
+        newC = curC;
+        if(newR < image.length && image[newR][newC] != 0){
+            possible.add(new int[] {newR, newC});
+        }
+        //left
+        newR = curR;
+        newC = curC -1;
+        if(newC >= 0 && image[newR][newC] != 0){
+            possible.add(new int[] {newR, newC});
+        }
+        //right
+        newR = curR;
+        newC = curC+1;
+        if(newC < image[newR].length && image[newR][newC] != 0){
+            possible.add(new int[] {newR, newC});
+        }
+
+        return possible;
     }
     
 }
