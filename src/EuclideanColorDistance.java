@@ -25,12 +25,19 @@ public class EuclideanColorDistance implements ColorDistanceFinder {
         int[] rgbA = convertToRGB(colorA);
         int[] rgbB = convertToRGB(colorB);
 
-        if(colorA == colorB) return 0;
-
-        return Math.sqrt((rgbA[0] - rgbB[0])^2 + (rgbA[1] - rgbB[1])^2 + (rgbA[2] - rgbB[2])^2);
+        return Math.sqrt((rgbB[0] - rgbA[0])^2 + (rgbB[1] - rgbA[1])^2 + (rgbB[2] - rgbA[2])^2);
     }
 
     private int[] convertToRGB(int color) {
+        char[] letters = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
+        Map<Character, Integer> values = new HashMap<>();
+        int num = 0;
+
+        for (char letter : letters) {
+            values.put(letter, num);
+            num++;
+        }
+
         int[] components = new int[3];
         String colorString = String.format("%06X", color);
 
@@ -38,15 +45,12 @@ public class EuclideanColorDistance implements ColorDistanceFinder {
         String green = colorString.substring(2, 4);
         String blue = colorString.substring(4);
 
-        components[0] = (charToInt(red) * 16) + charToInt(red);
-        components[0] = (charToInt(green) * 16) + charToInt(green);
-        components[0] = (charToInt(blue) * 16) + charToInt(blue);
+        components[0] = (values.get(red.charAt(0)) * 16) + values.get(red.charAt(1));
+
+        components[1] = (values.get(green.charAt(0)) * 16) + values.get(green.charAt(1));
+
+        components[2] = (values.get(blue.charAt(0)) * 16) + values.get(blue.charAt(1));;
 
         return components;
-    }
-
-    //This method takes the first character of a String then converts it to Hex int
-    private int charToInt(String s){ 
-        return Integer.parseInt(String.valueOf(s.charAt(0)), 16);
     }
 }
