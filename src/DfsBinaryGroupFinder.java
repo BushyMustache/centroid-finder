@@ -88,8 +88,8 @@ public class DfsBinaryGroupFinder implements BinaryGroupFinder {
         }
 
         pixels++;
-        sumX += row;
-        sumY += column;
+        sumX += column;
+        sumY += row;
 
         image[row][column] = 0;
 

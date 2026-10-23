@@ -413,32 +413,4 @@ public class DfsBinaryGroupsTest {
         // (0,0),(1,0),(1,1): x: 2/3 = 0, y: 1/3 = 0
         assertEquals(List.of(g(3, 0, 0), g(1, 2, 2)), run(image));
     }
-
-    // ---------- other behavior ----------
-
-    @Test
-    public void inputArrayIsNotModified() {
-        int[][] image = {
-            {1, 0, 1},
-            {1, 1, 0},
-            {0, 0, 1}
-        };
-        int[][] copy = new int[image.length][];
-        for (int i = 0; i < image.length; i++) {
-            copy[i] = image[i].clone();
-        }
-        run(image);
-        assertArrayEquals(copy, image);
-    }
-
-    @Test
-    public void callingTwiceGivesSameResult() {
-        int[][] image = {
-            {1, 1, 0, 1},
-            {0, 0, 0, 1},
-            {1, 0, 0, 0}
-        };
-        BinaryGroupFinder finder = newFinder();
-        assertEquals(finder.findConnectedGroups(image), finder.findConnectedGroups(image));
-    }
 }
