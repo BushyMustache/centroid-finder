@@ -83,7 +83,7 @@ public class DfsBinaryGroupFinder implements BinaryGroupFinder {
 
         if (row < 0 || row >= image.length ||
             column < 0 || column >= image[row].length ||
-            image[row][column] == 0) {
+            image[row][column] == 0 || pixels == (image.length * image[0].length)) {
             return;
         }
 

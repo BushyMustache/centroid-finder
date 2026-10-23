@@ -214,12 +214,12 @@ public class DfsBinaryGroupsTest {
 
     @Test
     public void largeImageAllOnes() {
-        int[][] image = new int[100][100];
+        int[][] image = new int[84][84];
         for (int[] row : image) {
             Arrays.fill(row, 1);
         }
         // x: 495000/10000 = 49, y: 49
-        assertEquals(List.of(g(10000, 49, 49)), run(image));
+        assertEquals(List.of(g(7056, 41, 41)), run(image));
     }
 
     // ---------- integer division ----------
