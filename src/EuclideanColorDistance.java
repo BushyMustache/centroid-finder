@@ -1,3 +1,6 @@
+import java.util.HashMap;
+import java.util.Map;
+
 public class EuclideanColorDistance implements ColorDistanceFinder {
     /**
      * Returns the euclidean color distance between two hex RGB colors.
@@ -20,5 +23,32 @@ public class EuclideanColorDistance implements ColorDistanceFinder {
     @Override
     public double distance(int colorA, int colorB) {
         return 0;
+    }
+
+    private int[] convertToRGB(int color) {
+        char[] letters = {'A', 'B', 'C', 'D', 'E', 'F'};
+        Map<Character, Integer> values = new HashMap<>();
+        int num = 10;
+
+        for (char letter : letters) {
+            values.put(letter, num);
+            num++;
+        }
+
+        int[] components = new int[3];
+        String colorString = (color + "");
+        colorString = colorString.substring(2);
+
+        String red = colorString.substring(0, 2);
+        String green = colorString.substring(2, 4);
+        String blue = colorString.substring(4);
+
+        components[0] = (values.get(red.charAt(0)) * 16) + values.get(red.charAt(1));
+
+        components[1] = (values.get(green.charAt(0)) * 16) + values.get(green.charAt(1));
+
+        components[2] = (values.get(blue.charAt(0)) * 16) + values.get(blue.charAt(1));;
+
+        return components;
     }
 }
