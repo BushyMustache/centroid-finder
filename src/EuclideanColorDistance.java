@@ -22,7 +22,10 @@ public class EuclideanColorDistance implements ColorDistanceFinder {
      */
     @Override
     public double distance(int colorA, int colorB) {
-        return 0;
+        int[] rgbA = convertToRGB(colorA);
+        int[] rgbB = convertToRGB(colorB);
+
+        return Math.sqrt((rgbA[0] - rgbB[0])^2 + (rgbA[1] - rgbB[1])^2 + (rgbA[2] - rgbB[2])^2);
     }
 
     private int[] convertToRGB(int color) {
@@ -36,8 +39,7 @@ public class EuclideanColorDistance implements ColorDistanceFinder {
         }
 
         int[] components = new int[3];
-        String colorString = (color + "");
-        colorString = colorString.substring(2);
+        String colorString = Integer.toHexString(color);
 
         String red = colorString.substring(0, 2);
         String green = colorString.substring(2, 4);
