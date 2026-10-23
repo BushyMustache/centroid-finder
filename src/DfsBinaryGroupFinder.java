@@ -39,7 +39,7 @@ public class DfsBinaryGroupFinder implements BinaryGroupFinder {
     public List<Group> findConnectedGroups(int[][] image) {
         if (image == null) throw new NullPointerException();
         if (image.length == 0 || image[0].length == 0) throw new IllegalArgumentException();
-        if (image[0].length > image[1].length || image[1].length > image[0].length) throw new IllegalArgumentException();
+        if(image.length!=1) if (image[0].length > image[1].length || image[1].length > image[0].length) throw new IllegalArgumentException();
         
         List<Group> groups = new ArrayList<>();
 
@@ -98,6 +98,7 @@ public class DfsBinaryGroupFinder implements BinaryGroupFinder {
             int nextColumn = column + move[1];
 
             dfs(image, nextRow, nextColumn);
+            
         }
     }
     
