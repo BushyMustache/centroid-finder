@@ -32,7 +32,7 @@ public class EuclideanColorDistance implements ColorDistanceFinder {
 
     private int[] convertToRGB(int color) {
         int[] components = new int[3];
-        String colorString = Integer.toHexString(color);
+        String colorString = String.format("%06X", color);
 
         String red = colorString.substring(0, 2);
         String green = colorString.substring(2, 4);
