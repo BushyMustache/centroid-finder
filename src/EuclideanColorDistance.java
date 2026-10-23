@@ -25,7 +25,11 @@ public class EuclideanColorDistance implements ColorDistanceFinder {
         int[] rgbA = convertToRGB(colorA);
         int[] rgbB = convertToRGB(colorB);
 
-        return Math.sqrt((rgbB[0] - rgbA[0])^2 + (rgbB[1] - rgbA[1])^2 + (rgbB[2] - rgbA[2])^2);
+        int redDiff = rgbB[0] - rgbA[0];
+        int greenDiff = rgbB[1] - rgbA[1];
+        int blueDiff = rgbB[2] - rgbA[2];
+
+        return Math.sqrt(redDiff * redDiff + greenDiff * greenDiff + blueDiff * blueDiff);
     }
 
     private int[] convertToRGB(int color) {
@@ -46,9 +50,7 @@ public class EuclideanColorDistance implements ColorDistanceFinder {
         String blue = colorString.substring(4);
 
         components[0] = (values.get(red.charAt(0)) * 16) + values.get(red.charAt(1));
-
         components[1] = (values.get(green.charAt(0)) * 16) + values.get(green.charAt(1));
-
         components[2] = (values.get(blue.charAt(0)) * 16) + values.get(blue.charAt(1));;
 
         return components;
