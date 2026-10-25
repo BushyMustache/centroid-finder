@@ -59,12 +59,11 @@ public class DistanceImageBinarizer implements ImageBinarizer {
     @Override
     public BufferedImage toBufferedImage(int[][] image) {
         int[][] copy = image.clone();
-        BufferedImage bufferedImage = new BufferedImage(copy.length, copy[0].length, BufferedImage.TYPE_INT_RGB);
-
-
-        for (int r = 0; r < copy.length; r++) {
-            for (int c = 0; c < copy[r].length; c++) {
-                if (copy[r][c] == 0) {
+        BufferedImage bufferedImage = new BufferedImage(copy[0].length, copy.length, BufferedImage.TYPE_INT_RGB);
+        
+        for (int c = 0; c < copy.length; c++) {
+            for (int r = 0; r < copy[c].length; r++) {
+                if (copy[c][r] == 0) {
                     bufferedImage.setRGB(r, c, 0x000000);
                 } else {
                     bufferedImage.setRGB(r, c, 0xFFFFFF);

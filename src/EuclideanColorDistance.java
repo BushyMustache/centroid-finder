@@ -51,7 +51,7 @@ public class EuclideanColorDistance implements ColorDistanceFinder {
 
         components[0] = (values.get(red.charAt(0)) * 16) + values.get(red.charAt(1));
         components[1] = (values.get(green.charAt(0)) * 16) + values.get(green.charAt(1));
-        components[2] = (values.get(blue.charAt(0)) * 16) + values.get(blue.charAt(1));;
+        components[2] = (values.get(blue.charAt(0)) * 16) + values.get(blue.charAt(1));
 
         return components;
     }
