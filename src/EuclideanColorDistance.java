@@ -44,7 +44,7 @@ public class EuclideanColorDistance implements ColorDistanceFinder {
 
         int[] components = new int[3];
         String colorString = String.format("%06X", color);
-        if (colorString.length() == 8) colorString.substring(2);
+        if (colorString.length() == 8) colorString = colorString.substring(2);
 
         String red = colorString.substring(0, 2);
         String green = colorString.substring(2, 4);
