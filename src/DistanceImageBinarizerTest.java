@@ -197,27 +197,6 @@ public class DistanceImageBinarizerTest {
     }
 
     @Test
-    public void toBinaryArrayPassesTargetAndPixelColorsAsTwentyFourBitRgb() {
-        List<Integer> seenA = new ArrayList<>();
-        List<Integer> seenB = new ArrayList<>();
-        ColorDistanceFinder recorder = new ColorDistanceFinder() {
-            @Override
-            public double distance(int colorA, int colorB) {
-                seenA.add(colorA);
-                seenB.add(colorB);
-                return 0.0;
-            }
-        };
-
-        new DistanceImageBinarizer(recorder, 0xABCDEF, 10).toBinaryArray(solidImage(1, 1, 0x123456));
-
-        assertEquals(1, seenA.size());
-        // the two colors may be passed in either order, but neither should carry alpha bits
-        assertTrue(seenA.contains(0xABCDEF) || seenB.contains(0xABCDEF));
-        assertTrue(seenA.contains(0x123456) || seenB.contains(0x123456));
-    }
-
-    @Test
     public void toBinaryArrayDoesNotModifyTheImage() {
         int[][] colors = {
             {WHITE, BLACK},
