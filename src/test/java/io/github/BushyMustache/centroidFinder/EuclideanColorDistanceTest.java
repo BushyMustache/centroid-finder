@@ -1,3 +1,5 @@
+package io.github.BushyMustache.centroidFinder;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;

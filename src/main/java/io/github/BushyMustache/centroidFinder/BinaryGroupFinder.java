@@ -1,3 +1,5 @@
+package io.github.BushyMustache.centroidFinder;
+
 import java.util.List;
 
 public interface BinaryGroupFinder {

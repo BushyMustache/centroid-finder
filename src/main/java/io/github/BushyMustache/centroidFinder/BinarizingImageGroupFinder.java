@@ -1,3 +1,5 @@
+package io.github.BushyMustache.centroidFinder;
+
 import java.awt.image.BufferedImage;
 import java.util.List;
 
