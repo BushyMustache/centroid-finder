@@ -13,7 +13,15 @@
   </properties>
 
   <dependencies>    
-    <!-- JUnit Jupiter -->
+  <!-- Source: https://mvnrepository.com/artifact/org.bytedeco/javacv -->
+    <dependency>
+        <groupId>org.bytedeco</groupId>
+        <artifactId>javacv</artifactId>
+        <version>1.5.14</version>
+        <scope>compile</scope>
+    </dependency>
+
+  <!-- JUnit Jupiter -->
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter</artifactId>
