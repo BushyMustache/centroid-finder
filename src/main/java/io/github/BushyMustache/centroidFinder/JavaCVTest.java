@@ -18,11 +18,9 @@ public class JavaCVTest {
             return;
         }
 
-        String videoPath = args[0];
         int frameCount = 0;
 
-        try (FFmpegFrameGrabber grabber =
-                 new FFmpegFrameGrabber(videoPath)) {
+        try (FFmpegFrameGrabber grabber = new FFmpegFrameGrabber("sampleInput/testVideo.mp4")) {
 
             grabber.start();
 
@@ -46,10 +44,6 @@ public class JavaCVTest {
             System.out.println(
                 "Successfully decoded " + frameCount + " frame(s)."
             );
-
-        } finally {
-            // Release the native FFmpeg resources.
-            // See the note below about cleanup.
         }
     }
 }
