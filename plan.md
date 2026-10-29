@@ -1,0 +1,16 @@
+# Overall Goal
+The overall goal of this project will be to make your centroid finder project be able to process mp4 videos. When working properly, it will generate a CSV that tracks the largest centroid over time. The first column will be the number of seconds since the beginning of the video, and the second and third columns will be the x and y coordinates of the largest found centroid at that time. If no centroid is found at that timestamp, coordinates of (-1, -1) should be used. In this portion of the project you will be taking each frame of video and feeding it to your centroid finder logic. You will create a command line utility that can process videos, for real!
+
+You will be creating a jar that can run like so:
+
+java -jar videoprocessor.jar inputPath outputCsv targetColor threshold
+Everything after videoprocessor.jar is command line arguments that will be taken in.
+
+## ImageSummaryApp
+This is where we will make the most changes. Currently, this class works for images, but not for videos.
+
+## DfsBinaryGroupFinder
+
+## EuclideanColorDistance
+
+## DistanceImageBinarizer
