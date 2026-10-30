@@ -21,7 +21,8 @@ Everything after videoprocessor.jar is command line arguments that will be taken
 - The new class will get the largest group that was output rather than all groups
 
 ## New Classes or Implementations
-- Make a class that seperates each frame as an image using JavaCV
-
-## Other Planning
-- 
+- Make a application entry point for our video processor (similar to ImageSummaryApp)
+- Make a class to read video frames and timestamps
+- Make a class for coordinate frame processing
+- Make a class for writing the largest centroid and (x, y) coordinates to a CSV file
+- Make tests for each class
