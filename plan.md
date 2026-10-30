@@ -6,11 +6,22 @@ You will be creating a jar that can run like so:
 java -jar videoprocessor.jar inputPath outputCsv targetColor threshold
 Everything after videoprocessor.jar is command line arguments that will be taken in.
 
+## General Plan
+- Get each frame from the video
+- Use each frame as an image and binarize each image group - BinarizingImageGroupFinder
+- Get the largest centroid based on the largest group of each frame
+- Count the frames that have passed to get the time passed
+- Output the time, and the x and y coordinates of the largest centroid
+
 ## ImageSummaryApp
-This is where we will make the most changes. Currently, this class works for images, but not for videos.
+- This is where we will make the most changes. Currently, this class works for images, but not for videos
 
 ## DfsBinaryGroupFinder
+- Make a new class that implements the DfsBinaryGroupFinder class
+- The new class will get the largest group that was output rather than all groups
 
-## EuclideanColorDistance
+## New Classes or Implementations
+- Make a class that seperates each frame as an image using JavaCV
 
-## DistanceImageBinarizer
+## Other Planning
+- 
